@@ -1,6 +1,7 @@
 package com.fundooapp.app.digicert;
 
 
+import com.fundooapp.app.config.AppContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -20,8 +21,8 @@ public class FileStorageService {
     private final Path fileStorageLocation;
 
     @Autowired
-    public FileStorageService(FileStorageProperties fileStorageProperties) {
-        this.fileStorageLocation = Paths.get(fileStorageProperties.getUploadDir())
+    public FileStorageService(AppContext fileStorageProperties) {
+        this.fileStorageLocation = Paths.get(fileStorageProperties.getFileDir())
                 .toAbsolutePath().normalize();
 
         try {
